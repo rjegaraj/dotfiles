@@ -62,6 +62,16 @@ set hidden
 nnoremap <Tab> :bn<CR>
 nnoremap <S-Tab> :bp<CR>
 
+" Gotta learn how to use my own shortcuts
+cnoreabbrev bn :call ShortcutTutor({ 'command': 'bn', 'shortcut': 'Tab' })
+cnoreabbrev bp :call ShortcutTutor({ 'command': 'bp', 'shortcut': 'S-Tab' })
+
+" Takes in a dictionary of signature { command: String, shortcut: String} and
+" forces you to use the custom shortcut instead of built-in command
+function ShortcutTutor(dictionary)
+    echo "Use " . a:dictionary.shortcut . " instead of " . a:dictionary.command
+endfunction
+
 " fzf mappings
 nnoremap ; :GitFiles -oc<CR>
 nnoremap <C-b> :Buffers<CR>
@@ -70,14 +80,18 @@ nnoremap <C-b> :Buffers<CR>
 map <Leader>a :Ack!<Space>
 
 " Gotta learn how to use vim like an expert
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-inoremap <Up> <NOP>
-inoremap <Down> <NOP>
-inoremap <Left> <NOP>
-inoremap <Right> <NOP>
+noremap <Up> :call StopBeingACasual()<CR>
+noremap <Down> :call StopBeingACasual()<CR>
+noremap <Left> :call StopBeingACasual()<CR>
+noremap <Right> :call StopBeingACasual()<CR>
+inoremap <Up> :call StopBeingACasual()<CR>
+inoremap <Down> :call StopBeingACasual()<CR>
+inoremap <Left> :call StopBeingACasual()<CR>
+inoremap <Right> :call StopBeingACasul()<CR>
+
+function StopBeingACasual()
+    echo "Plz, direction keys are for the weak"
+endfunction
 
 " NERDTree mappings
 nnoremap <leader>e :NERDTreeToggle<CR>
