@@ -87,7 +87,7 @@ noremap <Right> :call StopBeingACasual()<CR>
 inoremap <Up> :call StopBeingACasual()<CR>
 inoremap <Down> :call StopBeingACasual()<CR>
 inoremap <Left> :call StopBeingACasual()<CR>
-inoremap <Right> :call StopBeingACasul()<CR>
+inoremap <Right> :call StopBeingACasual()<CR>
 
 function StopBeingACasual()
     echo "Plz, direction keys are for the weak"
