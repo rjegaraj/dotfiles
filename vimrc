@@ -14,6 +14,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-commentary'
 
 syntax enable
 filetype plugin indent on
@@ -44,11 +45,14 @@ set laststatus=2 " Always display status line
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
 " TypeScript stuff
+let g:tsuquyomi_use_vimproc = 0
+let g:tsuquyomi_disable_quickfix = 1
 let g:tsuquyomi_completion_detail = 1
 au BufEnter *.ts setlocal filetype=typescript
 au BufEnter *.ts setlocal textwidth=120
 au BufEnter *.ts setlocal colorcolumn=+1
 au BufEnter *.ts nnoremap gd :TsuDefinition<CR>
+au InsertLeave,TextChanged,BufWritePost *.ts,*.tsx call tsuquyomi#asyncGeterr()
 
 " Trailing whitespace
 au BufWrite * :%s/\s\+$//e
@@ -73,7 +77,7 @@ function ShortcutTutor(dictionary)
 endfunction
 
 " fzf mappings
-nnoremap ; :GitFiles -oc<CR>
+nnoremap ; :GitFiles -oc --exclude-standard<CR>
 nnoremap <C-b> :Buffers<CR>
 
 " Map ack
@@ -84,10 +88,10 @@ noremap <Up> :call StopBeingACasual()<CR>
 noremap <Down> :call StopBeingACasual()<CR>
 noremap <Left> :call StopBeingACasual()<CR>
 noremap <Right> :call StopBeingACasual()<CR>
-inoremap <Up> :call StopBeingACasual()<CR>
-inoremap <Down> :call StopBeingACasual()<CR>
-inoremap <Left> :call StopBeingACasual()<CR>
-inoremap <Right> :call StopBeingACasual()<CR>
+inoremap <Up> :call <nop>
+inoremap <Down> :call <nop>
+inoremap <Left> :call <nop>
+inoremap <Right> :call <nop>
 
 function StopBeingACasual()
     echo "Plz, direction keys are for the weak"
