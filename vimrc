@@ -10,7 +10,7 @@ Plugin 'JulesWang/css.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'scrooloose/nerdtree'
@@ -89,8 +89,9 @@ endfunction
 nnoremap ; :GitFiles -oc --exclude-standard<CR>
 nnoremap <C-b> :Buffers<CR>
 
-" Map ack
-map <Leader>a :Ack!<Space>
+" Map ag
+map <Leader>a :Ag<Space>
+let g:ag_working_path_mode="r"
 
 " Gotta learn how to use vim like an expert
 noremap <Up> :call StopBeingACasual()<CR>
