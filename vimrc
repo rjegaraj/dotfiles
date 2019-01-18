@@ -15,6 +15,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-commentary'
+Plugin 'morhetz/gruvbox'
 
 syntax enable
 filetype plugin indent on
@@ -37,7 +38,9 @@ set shiftwidth=4
 set smartcase
 set softtabstop=4
 syntax on
+colorscheme gruvbox
 
+set termguicolors
 set encoding=utf-8
 set laststatus=2 " Always display status line
 
@@ -45,14 +48,20 @@ set laststatus=2 " Always display status line
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
 " TypeScript stuff
-let g:tsuquyomi_use_vimproc = 0
 let g:tsuquyomi_disable_quickfix = 1
 let g:tsuquyomi_completion_detail = 1
 au BufEnter *.ts setlocal filetype=typescript
 au BufEnter *.ts setlocal textwidth=120
 au BufEnter *.ts setlocal colorcolumn=+1
 au BufEnter *.ts nnoremap gd :TsuDefinition<CR>
-au InsertLeave,TextChanged,BufWritePost *.ts,*.tsx call tsuquyomi#asyncGeterr()
+
+" Wrap text in the quickix window
+augroup quickfix
+    autocmd!
+    autocmd QuickFixCmdPost wincmd p
+    autocmd FileType qf set nobuflisted
+    autocmd FileType qf setlocal wrap
+augroup END
 
 " Trailing whitespace
 au BufWrite * :%s/\s\+$//e
@@ -88,10 +97,10 @@ noremap <Up> :call StopBeingACasual()<CR>
 noremap <Down> :call StopBeingACasual()<CR>
 noremap <Left> :call StopBeingACasual()<CR>
 noremap <Right> :call StopBeingACasual()<CR>
-inoremap <Up> :call <nop>
-inoremap <Down> :call <nop>
-inoremap <Left> :call <nop>
-inoremap <Right> :call <nop>
+inoremap <Up> <nop>
+inoremap <Down> <nop>
+inoremap <Left> <nop>
+inoremap <Right> <nop>
 
 function StopBeingACasual()
     echo "Plz, direction keys are for the weak"
