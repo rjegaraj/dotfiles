@@ -39,6 +39,7 @@ set smartcase
 set softtabstop=4
 syntax on
 colorscheme gruvbox
+set background=dark
 
 set termguicolors
 set encoding=utf-8
