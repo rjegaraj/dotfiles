@@ -3,19 +3,19 @@ filetype off
 set rtp +=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'junegunn/fzf'
+Plugin 'VundleVim/Vundle.vim'       " Plugin manager
+Plugin 'junegunn/fzf'               " Fuzzy finder
 Plugin 'junegunn/fzf.vim'
-Plugin 'JulesWang/css.vim'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'Quramy/tsuquyomi'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'rking/ag.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-commentary'
-Plugin 'morhetz/gruvbox'
+Plugin 'JulesWang/css.vim'          " CSS
+Plugin 'kchmck/vim-coffee-script'   " CoffeeScript Plugin
+Plugin 'Quramy/tsuquyomi'           " TypeScript Plugin
+Plugin 'leafgarland/typescript-vim' " Syntax highlight for TypeScript
+Plugin 'rking/ag.vim'               " The Silver Searcher
+Plugin 'vim-airline/vim-airline'    " Statusbar
+Plugin 'cakebaker/scss-syntax.vim'  " SASS Syntax
+Plugin 'tpope/vim-commentary'       " Easy commenting
+Plugin 'tpope/vim-surround'         " Honestly should be built into vim by default
+Plugin 'morhetz/gruvbox'            " Color theme
 
 syntax enable
 filetype plugin indent on
@@ -23,30 +23,34 @@ call vundle#end()
 
 let mapleader=','
 
-set autoread
-set backspace=indent,eol,start
-set clipboard=unnamed
-set expandtab
-set hlsearch
-set ignorecase
-set incsearch
-set matchpairs+=<:>
-set nowrap
-set number
-set scrolloff=5
-set shiftwidth=4
-set smartcase
+set autoread                   " Read file again if changed outside vim, doesn't occur if file is deleted externally
+set backspace=indent,eol,start " Allow backspacing over everything in insert mode
+set clipboard=unnamed          " Access system clipboard
+
+" http://vim.wikia.com/wiki/Indenting_source_code
+set expandtab                  " Expands tab to spaces in insert mode
 set softtabstop=4
-syntax on
-colorscheme gruvbox
-set background=dark
+set shiftwidth=4
 
-set termguicolors
+set hlsearch                   " Highlights all search pattern matches
+set incsearch                  " Enables incremental search
+
+set ignorecase                 " Self-explanatory
+set smartcase                  " With both ignorecase and smartcase on, if a pattern contains an uppercase char, it's case sensitive, otherwise it's not
+
+set matchpairs+=<:>            " Adds <:> to the default dictionary of pairs. Useful for HTML dev
+set nowrap                     " Display long lines as one line
+set number                     " Show line numbers
+set scrolloff=5                " Number of context lines above and below the cursor
+
 set encoding=utf-8
-set laststatus=2 " Always display status line
+set laststatus=2               " Always display status line
+set termguicolors              " Use terminal colors
 
-" Set line number color to Dark Grey
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+" Setup colors
+colorscheme gruvbox
+set bg=dark
+let g:airline_theme = 'gruvbox'
 
 " TypeScript stuff
 let g:tsuquyomi_disable_quickfix = 1
@@ -108,10 +112,6 @@ function StopBeingACasual()
     echo "Plz, direction keys are for the weak"
 endfunction
 
-" NERDTree mappings
-nnoremap <leader>e :NERDTreeToggle<CR>
-nnoremap <leader>f :NERDTreeFind<CR>
-
-" TODO: Remove when we migrate off CoffeeScript
+" Syntactic sugar for other extensions
 au BufEnter *.coffee setlocal syntax=coffee
 au BufEnter *.underscore setlocal syntax=html
