@@ -16,6 +16,7 @@ Plugin 'cakebaker/scss-syntax.vim'  " SASS Syntax
 Plugin 'tpope/vim-commentary'       " Easy commenting
 Plugin 'tpope/vim-surround'         " Honestly should be built into vim by default
 Plugin 'morhetz/gruvbox'            " Color theme
+Plugin 'mbbill/undotree'            " Better undo history
 
 syntax enable
 filetype plugin indent on
@@ -25,7 +26,7 @@ let mapleader=','
 
 set autoread                   " Read file again if changed outside vim, doesn't occur if file is deleted externally
 set backspace=indent,eol,start " Allow backspacing over everything in insert mode
-set clipboard=unnamed          " Access system clipboard
+set clipboard+=unnamed          " Access system clipboard
 
 " http://vim.wikia.com/wiki/Indenting_source_code
 set expandtab                  " Expands tab to spaces in insert mode
@@ -53,8 +54,6 @@ set bg=dark
 let g:airline_theme = 'gruvbox'
 
 " TypeScript stuff
-let g:tsuquyomi_disable_quickfix = 1
-let g:tsuquyomi_completion_detail = 1
 au BufEnter *.ts setlocal filetype=typescript
 au BufEnter *.ts setlocal textwidth=120
 au BufEnter *.ts setlocal colorcolumn=+1
