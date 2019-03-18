@@ -26,7 +26,7 @@ let mapleader=','
 
 set autoread                   " Read file again if changed outside vim, doesn't occur if file is deleted externally
 set backspace=indent,eol,start " Allow backspacing over everything in insert mode
-set clipboard+=unnamed          " Access system clipboard
+set clipboard+=unnamed         " Access system clipboard
 
 " http://vim.wikia.com/wiki/Indenting_source_code
 set expandtab                  " Expands tab to spaces in insert mode
