@@ -26,7 +26,7 @@ let mapleader=','
 
 set autoread                   " Read file again if changed outside vim, doesn't occur if file is deleted externally
 set backspace=indent,eol,start " Allow backspacing over everything in insert mode
-set clipboard+=unnamed         " Access system clipboard
+set clipboard=unnamed          " Access system clipboard
 
 " http://vim.wikia.com/wiki/Indenting_source_code
 set expandtab                  " Expands tab to spaces in insert mode
@@ -74,6 +74,9 @@ au BufWrite * :%s/\s\+$//e
 au InsertEnter * set nohlsearch
 au InsertLeave * set hlsearch
 
+" Super Enter!
+nnoremap <Return> o<Esc>k
+
 " Searching & Buffers
 set hidden
 nnoremap <Tab> :bn<CR>
@@ -114,3 +117,4 @@ endfunction
 " Syntactic sugar for other extensions
 au BufEnter *.coffee setlocal syntax=coffee
 au BufEnter *.underscore setlocal syntax=html
+
