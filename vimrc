@@ -74,9 +74,6 @@ au BufWrite * :%s/\s\+$//e
 au InsertEnter * set nohlsearch
 au InsertLeave * set hlsearch
 
-" Super Enter!
-nnoremap <Return> o<Esc>k
-
 " Searching & Buffers
 set hidden
 nnoremap <Tab> :bn<CR>
